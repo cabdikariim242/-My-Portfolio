@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+ import { motion, AnimatePresence } from "framer-motion";
+ import { EnvelopeSimple, MapPin, GlobeHemisphereEast, LinkedinLogo, GithubLogo, TwitterLogo } from "phosphor-react";
 import image from "./assets/abdikarim.png";
 import agecalculater from "./assets/ageCalculater.png";
 import countdown from "./assets/countdown.png";
@@ -701,161 +702,7 @@ const Portfolio = () => {
       </section>
 
       {/* Contact Section */}
-      <section
-        id="contact"
-        className="py-20 px-6 bg-gradient-to-br from-blue-100 to-indigo-200 dark:from-gray-900 dark:to-gray-800"
-      >
-        <div className="max-w-4xl mx-auto ">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-center mb-4"
-          >
-            Get In <span className="text-blue-500">Touch</span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-center text-lg mb-12 max-w-2xl mx-auto"
-          >
-            Have a project in mind or want to discuss potential opportunities?
-            I'd love to hear from you!
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className={`rounded-xl p-8 ${
-              theme === "dark" ? "bg-gray-800" : "bg-white"
-            } shadow-lg`}
-          >
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                    placeholder="Enter your name"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                    placeholder="Enter your email"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                  placeholder="What is this regarding?"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                  placeholder="Tell me about your project..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300"
-              >
-                Send Message
-              </button>
-            </form>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
-          >
-            <div
-              className={`p-6 rounded-xl text-center ${
-                theme === "dark" ? "bg-gray-800" : "bg-white"
-              } shadow-lg`}
-            >
-              <div className="text-3xl mb-4">📧</div>
-              <h3 className="font-bold mb-2">Email</h3>
-              <p className="text-blue-500">
-  <a href="mailto:abdikarim.dev01@gmail.com">abdikarim.dev01@gmail.com</a>
-</p>
-            </div>
-            <div
-              className={`p-6 rounded-xl text-center ${
-                theme === "dark" ? "bg-gray-800" : "bg-white"
-              } shadow-lg`}
-            >
-              <div className="text-3xl mb-4">📍</div>
-              <h3 className="font-bold mb-2">Location</h3>
-              <p>Mogadishu, Banaadir, Somalia</p>
-            </div>
-            <div
-              className={`p-6 rounded-xl text-center ${
-                theme === "dark" ? "bg-gray-800" : "bg-white"
-              } shadow-lg`}
-            >
-              <div className="text-3xl mb-4">🌐</div>
-              <h3 className="font-bold mb-2">Social</h3>
-              <div className="flex justify-center space-x-4">
-                <a href="https://www.linkedin.com/in/abdikarim-dev-b6a94b388/" className="text-blue-500 hover:text-blue-700">
-                  LinkedIn
-                </a>
-                <a href="https://github.com/cabdikariim242/" className="text-blue-500 hover:text-blue-700">
-                  GitHub
-                </a>
-                <a href="https://x.com/AbdikarimD31284" className="text-blue-500 hover:text-blue-700">
-                  Twitter
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <ContactSection/>
 
       {/* Footer */}
       <footer
@@ -870,5 +717,711 @@ const Portfolio = () => {
     </div>
   );
 };
+
+//ANOTHER
+
+const InteractiveBlobs = () => {
+  const svgRef = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  // Track mouse position relative to SVG container
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (!svgRef.current) return;
+      const rect = svgRef.current.getBoundingClientRect();
+      setMousePos({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  // Calculate blob positions with lag effect
+  // We'll use simple easing to move blobs toward mousePos
+  const [blobPositions, setBlobPositions] = useState([
+    { x: 100, y: 100 },
+    { x: 300, y: 200 },
+    { x: 500, y: 150 },
+  ]);
+
+  useEffect(() => {
+    let animationFrame;
+    const ease = 0.1;
+
+    const animate = () => {
+      setBlobPositions((prev) =>
+        prev.map(({ x, y }) => ({
+          x: x + (mousePos.x - x) * ease,
+          y: y + (mousePos.y - y) * ease,
+        }))
+      );
+      animationFrame = requestAnimationFrame(animate);
+    };
+    animate();
+    return () => cancelAnimationFrame(animationFrame);
+  }, [mousePos]);
+
+  return (
+    <svg
+      ref={svgRef}
+      className="absolute inset-0 w-full h-full -z-10"
+      viewBox="0 0 600 400"
+      preserveAspectRatio="xMidYMid meet"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="40" />
+        </filter>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#ff6ec4" />
+          <stop offset="100%" stopColor="#7873f5" />
+        </linearGradient>
+        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#42e695" />
+          <stop offset="100%" stopColor="#3bb2b8" />
+        </linearGradient>
+        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#fddb92" />
+          <stop offset="100%" stopColor="#d1fdff" />
+        </linearGradient>
+      </defs>
+
+      {/* Blob 1 */}
+      <motion.path
+        animate={{
+          d: [
+            "M120,100 Q150,130 180,100 T240,100 Q270,70 300,100 T360,100 Q390,130 420,100 T480,100 Q510,70 540,100 T600,100 L600 400 L0 400 L0 100 Z",
+            "M120,110 Q150,90 180,110 T240,110 Q270,140 300,110 T360,110 Q390,90 420,110 T480,110 Q510,140 540,110 T600,110 L600 400 L0 400 L0 110 Z",
+            "M120,100 Q150,130 180,100 T240,100 Q270,70 300,100 T360,100 Q390,130 420,100 T480,100 Q510,70 540,100 T600,100 L600 400 L0 400 L0 100 Z",
+          ],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        fill="url(#grad1)"
+        filter="url(#blur)"
+        style={{
+          transform: `translate(${blobPositions[0].x / 15}px, ${blobPositions[0].y / 15}px)`,
+        }}
+      />
+
+      {/* Blob 2 */}
+      <motion.circle
+        cx={blobPositions[1].x}
+        cy={blobPositions[1].y}
+        r="120"
+        fill="url(#grad2)"
+        filter="url(#blur)"
+        animate={{
+          r: [110, 130, 110],
+        }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Blob 3 */}
+      <motion.ellipse
+        cx={blobPositions[2].x}
+        cy={blobPositions[2].y}
+        rx="140"
+        ry="90"
+        fill="url(#grad3)"
+        filter="url(#blur)"
+        animate={{
+          rx: [130, 150, 130],
+          ry: [80, 100, 80],
+        }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </svg>
+  );
+};
+
+const ContactSection = ({ theme }) => {
+  return (
+    <section
+      id="contact"
+      className="relative py-24 px-6 overflow-hidden min-h-screen flex items-center"
+    >
+      <InteractiveBlobs />
+
+      <div className="max-w-4xl mx-auto relative z-10 w-full">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-extrabold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-600 to-blue-600"
+        >
+          Get In <span className="text-pink-500">Touch</span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.15 }}
+          viewport={{ once: true }}
+          className="text-center text-lg md:text-xl max-w-3xl mx-auto mb-16 text-gray-900 dark:text-gray-200"
+        >
+          Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.3 }}
+          viewport={{ once: true }}
+          className={`rounded-3xl p-10 shadow-2xl backdrop-blur-xl border border-white/20 bg-white/70 dark:bg-gray-900/70`}
+        >
+          <form className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-200"
+                >
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-200"
+                >
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition"
+                  placeholder="Enter your email"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="subject"
+                className="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-200"
+              >
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition"
+                placeholder="What is this regarding?"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-200"
+              >
+                Your Message
+              </label>
+              <textarea
+                id="message"
+                rows={6}
+                className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition resize-none"
+                placeholder="Tell me about your project..."
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-4 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-600 hover:from-blue-600 hover:via-purple-600 hover:to-pink-500 text-white font-extrabold rounded-xl shadow-lg transition-transform transform hover:scale-105"
+            >
+              Send Message
+            </button>
+          </form>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.45 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16"
+        >
+          {/* Email */}
+          <div className="p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 flex flex-col items-center space-y-4">
+            <EnvelopeSimple size={48} className="text-pink-500" />
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Email</h3>
+            <a
+              href="mailto:abdikarim.dev01@gmail.com"
+              className="text-pink-600 hover:text-pink-800 font-semibold transition"
+            >
+              abdikarim.dev01@gmail.com
+            </a>
+          </div>
+
+          {/* Location */}
+          <div className="p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 flex flex-col items-center space-y-4">
+            <MapPin size={48} className="text-purple-600" />
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Location</h3>
+            <p className="text-gray-700 dark:text-gray-300 font-medium">Mogadishu, Banaadir, Somalia</p>
+          </div>
+
+          {/* Social */}
+          <div className="p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 flex flex-col items-center space-y-6">
+            <GlobeHemisphereEast size={48} className="text-cyan-600" />
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Social</h3>
+            <div className="flex justify-center space-x-8 text-pink-600 dark:text-pink-400">
+              <a
+                href="https://www.linkedin.com/in/abdikarim-dev-b6a94b388/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="hover:text-pink-800 transition"
+              >
+                <LinkedinLogo size={32} />
+              </a>
+              <a
+                href="https://github.com/cabdikariim242/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="hover:text-gray-900 dark:hover:text-white transition"
+              >
+                <GithubLogo size={32} />
+              </a>
+              <a
+                href="https://x.com/AbdikarimD31284"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+                className="hover:text-pink-500 transition"
+              >
+                <TwitterLogo size={32} />
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+;
+//ANOTHER BACKUP
+// const AnimatedBackground = () => (
+//   <div
+//     aria-hidden="true"
+//     className="absolute inset-0 -z-10 overflow-hidden"
+//   >
+//     {/* Animated gradient */}
+//     <div
+//       className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 bg-[length:400%_400%] animate-gradient-xy"
+//       style={{ filter: "blur(80px)" }}
+//     />
+//     {/* Abstract SVG pattern */}
+//     <svg
+//       className="absolute inset-0 w-full h-full opacity-20"
+//       xmlns="http://www.w3.org/2000/svg"
+//       preserveAspectRatio="xMidYMid slice"
+//       viewBox="0 0 800 600"
+//       fill="none"
+//     >
+//       <circle cx="200" cy="150" r="150" fill="url(#grad1)" />
+//       <circle cx="600" cy="450" r="200" fill="url(#grad2)" />
+//       <defs>
+//         <radialGradient id="grad1" cx="0.5" cy="0.5" r="0.5">
+//           <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.7" />
+//           <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+//         </radialGradient>
+//         <radialGradient id="grad2" cx="0.5" cy="0.5" r="0.5">
+//           <stop offset="0%" stopColor="#ec4899" stopOpacity="0.6" />
+//           <stop offset="100%" stopColor="#f43f5e" stopOpacity="0" />
+//         </radialGradient>
+//       </defs>
+//     </svg>
+//   </div>
+// );
+
+// const ContactSection = ({ theme }) => {
+//   return (
+//     <section
+//       id="contact"
+//       className="relative py-24 px-6 overflow-hidden"
+//       style={{ minHeight: "100vh" }}
+//     >
+//       <AnimatedBackground />
+
+//       <div className="max-w-4xl mx-auto relative z-10">
+//         <motion.h2
+//           initial={{ opacity: 0, y: 30 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.9 }}
+//           viewport={{ once: true }}
+//           className="text-4xl md:text-5xl font-extrabold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-600 to-pink-500"
+//         >
+//           Get In <span className="text-blue-500">Touch</span>
+//         </motion.h2>
+
+//         <motion.p
+//           initial={{ opacity: 0, y: 20 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.9, delay: 0.15 }}
+//           viewport={{ once: true }}
+//           className="text-center text-lg md:text-xl max-w-3xl mx-auto mb-16 text-gray-500 dark:text-gray-100"
+//         >
+//           Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!
+//         </motion.p>
+
+//         <motion.div
+//           initial={{ opacity: 0, y: 20 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.9, delay: 0.3 }}
+//           viewport={{ once: true }}
+//           className={`rounded-3xl p-10 shadow-2xl backdrop-blur-xl border border-white/20 ${
+//             theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
+//           }`}
+//         >
+//           <form className="space-y-8">
+//             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+//               <div>
+//                 <label
+//                   htmlFor="name"
+//                   className="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-200"
+//                 >
+//                   Your Name
+//                 </label>
+//                 <input
+//                   type="text"
+//                   id="name"
+//                   className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition"
+//                   placeholder="Enter your name"
+//                 />
+//               </div>
+//               <div>
+//                 <label
+//                   htmlFor="email"
+//                   className="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-200"
+//                 >
+//                   Email Address
+//                 </label>
+//                 <input
+//                   type="email"
+//                   id="email"
+//                   className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition"
+//                   placeholder="Enter your email"
+//                 />
+//               </div>
+//             </div>
+
+//             <div>
+//               <label
+//                 htmlFor="subject"
+//                 className="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-200"
+//               >
+//                 Subject
+//               </label>
+//               <input
+//                 type="text"
+//                 id="subject"
+//                 className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition"
+//                 placeholder="What is this regarding?"
+//               />
+//             </div>
+
+//             <div>
+//               <label
+//                 htmlFor="message"
+//                 className="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-200"
+//               >
+//                 Your Message
+//               </label>
+//               <textarea
+//                 id="message"
+//                 rows={6}
+//                 className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition resize-none"
+//                 placeholder="Tell me about your project..."
+//               />
+//             </div>
+
+//             <button
+//               type="submit"
+//               className="w-full py-4 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-600 hover:from-blue-600 hover:via-purple-600 hover:to-pink-500 text-white font-extrabold rounded-xl shadow-lg transition-transform transform hover:scale-105"
+//             >
+//               Send Message
+//             </button>
+//           </form>
+//         </motion.div>
+
+//         <motion.div
+//           initial={{ opacity: 0, y: 20 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.9, delay: 0.45 }}
+//           viewport={{ once: true }}
+//           className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16"
+//         >
+//           {/* Email */}
+//           <div
+//             className={`p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl ${
+//               theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
+//             } flex flex-col items-center space-y-4`}
+//           >
+//             <EnvelopeSimple size={48} className="text-pink-500" />
+//             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Email</h3>
+//             <a
+//               href="mailto:abdikarim.dev01@gmail.com"
+//               className="text-pink-600 hover:text-pink-800 font-semibold transition"
+//             >
+//               abdikarim.dev01@gmail.com
+//             </a>
+//           </div>
+
+//           {/* Location */}
+//           <div
+//             className={`p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl ${
+//               theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
+//             } flex flex-col items-center space-y-4`}
+//           >
+//             <MapPin size={48} className="text-purple-600" />
+//             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Location</h3>
+//             <p className="text-gray-700 dark:text-gray-300 font-medium">Mogadishu, Banaadir, Somalia</p>
+//           </div>
+
+//           {/* Social */}
+//           <div
+//             className={`p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl ${
+//               theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
+//             } flex flex-col items-center space-y-6`}
+//           >
+//             <GlobeHemisphereEast size={48} className="text-cyan-600" />
+//             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Social</h3>
+//             <div className="flex justify-center space-x-8 text-pink-600 dark:text-pink-400">
+//               <a
+//                 href="https://www.linkedin.com/in/abdikarim-dev-b6a94b388/"
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 aria-label="LinkedIn"
+//                 className="hover:text-pink-800 transition"
+//               >
+//                 <LinkedinLogo size={32} />
+//               </a>
+//               <a
+//                 href="https://github.com/cabdikariim242/"
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 aria-label="GitHub"
+//                 className="hover:text-gray-900 dark:hover:text-white transition"
+//               >
+//                 <GithubLogo size={32} />
+//               </a>
+//               <a
+//                 href="https://x.com/AbdikarimD31284"
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 aria-label="Twitter"
+//                 className="hover:text-pink-500 transition"
+//               >
+//                 <TwitterLogo size={32} />
+//               </a>
+//             </div>
+//           </div>
+//         </motion.div>
+//       </div>
+
+//       <style jsx>{`
+//         @keyframes gradient-xy {
+//           0% {
+//             background-position: 0% 50%;
+//           }
+//           50% {
+//             background-position: 100% 50%;
+//           }
+//           100% {
+//             background-position: 0% 50%;
+//           }
+//         }
+//         .animate-gradient-xy {
+//           animation: gradient-xy 15s ease infinite;
+//         }
+//       `}</style>
+//     </section>
+//   );
+// };
+
+//BACK UP PLAN
+// const ContactSection = ({ theme }) => {
+//   return (
+//     <section
+//       id="contact"
+//       className="py-24 px-6 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800"
+//     >
+//       <div className="max-w-4xl mx-auto">
+//         <motion.h2
+//           initial={{ opacity: 0, y: 30 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.9 }}
+//           viewport={{ once: true }}
+//           className="text-4xl md:text-5xl font-extrabold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"
+//         >
+//           Get In <span className="text-blue-500">Touch</span>
+//         </motion.h2>
+
+//         <motion.p
+//           initial={{ opacity: 0, y: 20 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.9, delay: 0.15 }}
+//           viewport={{ once: true }}
+//           className="text-center text-lg md:text-xl max-w-3xl mx-auto mb-16 text-gray-700 dark:text-gray-300"
+//         >
+//           Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!
+//         </motion.p>
+
+//         <motion.div
+//           initial={{ opacity: 0, y: 20 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.9, delay: 0.3 }}
+//           viewport={{ once: true }}
+//           className={`rounded-3xl p-10 shadow-2xl backdrop-blur-xl border border-white/20 ${
+//             theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
+//           }`}
+//         >
+//           <form className="space-y-8">
+//             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+//               <div>
+//                 <label htmlFor="name" className="block text-sm font-semibold mb-2 text-gray-800 dark:text-gray-200">
+//                   Your Name
+//                 </label>
+//                 <input
+//                   type="text"
+//                   id="name"
+//                   className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-400 transition"
+//                   placeholder="Enter your name"
+//                 />
+//               </div>
+//               <div>
+//                 <label htmlFor="email" className="block text-sm font-semibold mb-2 text-gray-800 dark:text-gray-200">
+//                   Email Address
+//                 </label>
+//                 <input
+//                   type="email"
+//                   id="email"
+//                   className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-400 transition"
+//                   placeholder="Enter your email"
+//                 />
+//               </div>
+//             </div>
+
+//             <div>
+//               <label htmlFor="subject" className="block text-sm font-semibold mb-2 text-gray-800 dark:text-gray-200">
+//                 Subject
+//               </label>
+//               <input
+//                 type="text"
+//                 id="subject"
+//                 className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-400 transition"
+//                 placeholder="What is this regarding?"
+//               />
+//             </div>
+
+//             <div>
+//               <label htmlFor="message" className="block text-sm font-semibold mb-2 text-gray-800 dark:text-gray-200">
+//                 Your Message
+//               </label>
+//               <textarea
+//                 id="message"
+//                 rows={6}
+//                 className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-400 transition resize-none"
+//                 placeholder="Tell me about your project..."
+//               />
+//             </div>
+
+//             <button
+//               type="submit"
+//               className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white font-extrabold rounded-xl shadow-lg transition-transform transform hover:scale-105"
+//             >
+//               Send Message
+//             </button>
+//           </form>
+//         </motion.div>
+
+//         <motion.div
+//           initial={{ opacity: 0, y: 20 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.9, delay: 0.45 }}
+//           viewport={{ once: true }}
+//           className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16"
+//         >
+//           {/* Email */}
+//           <div
+//             className={`p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl ${
+//               theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
+//             } flex flex-col items-center space-y-4`}
+//           >
+//             <EnvelopeSimple size={48} className="text-blue-600" />
+//             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Email</h3>
+//             <a
+//               href="mailto:abdikarim.dev01@gmail.com"
+//               className="text-blue-600 hover:text-blue-800 font-semibold transition"
+//             >
+//               abdikarim.dev01@gmail.com
+//             </a>
+//           </div>
+
+//           {/* Location */}
+//           <div
+//             className={`p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl ${
+//               theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
+//             } flex flex-col items-center space-y-4`}
+//           >
+//             <MapPin size={48} className="text-purple-600" />
+//             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Location</h3>
+//             <p className="text-gray-700 dark:text-gray-300 font-medium">Mogadishu, Banaadir, Somalia</p>
+//           </div>
+
+//           {/* Social */}
+//           <div
+//             className={`p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl ${
+//               theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
+//             } flex flex-col items-center space-y-6`}
+//           >
+//             <GlobeHemisphereEast size={48} className="text-cyan-600" />
+//             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Social</h3>
+//             <div className="flex justify-center space-x-8 text-blue-600 dark:text-blue-400">
+//               <a
+//                 href="https://www.linkedin.com/in/abdikarim-dev-b6a94b388/"
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 aria-label="LinkedIn"
+//                 className="hover:text-blue-800 transition"
+//               >
+//                 <LinkedinLogo size={32} />
+//               </a>
+//               <a
+//                 href="https://github.com/cabdikariim242/"
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 aria-label="GitHub"
+//                 className="hover:text-gray-900 dark:hover:text-white transition"
+//               >
+//                 <GithubLogo size={32} />
+//               </a>
+//               <a
+//                 href="https://x.com/AbdikarimD31284"
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 aria-label="Twitter"
+//                 className="hover:text-blue-500 transition"
+//               >
+//                 <TwitterLogo size={32} />
+//               </a>
+//             </div>
+//           </div>
+//         </motion.div>
+//       </div>
+//     </section>
+//   );
+// };
 
 export default Portfolio;
