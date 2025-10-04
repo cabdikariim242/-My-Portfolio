@@ -75,8 +75,8 @@ const Portfolio = () => {
     frontend: [
       "Html",
       "Css",
-      "Javascript",
       "vue",
+       "Javascript",
       "React",
       "TypeScript",
       ,
