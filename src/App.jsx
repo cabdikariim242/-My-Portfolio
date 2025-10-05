@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
+import emailjs from '@emailjs/browser';
  import { motion, AnimatePresence } from "framer-motion";
  import { EnvelopeSimple, MapPin, GlobeHemisphereEast, LinkedinLogo, GithubLogo, TwitterLogo } from "phosphor-react";
+ import toast from 'react-hot-toast';
+ import { Toaster } from 'react-hot-toast';
 import image from "./assets/abdikarim.png";
 import agecalculater from "./assets/ageCalculater.png";
 import countdown from "./assets/countdown.png";
@@ -15,6 +18,7 @@ const Portfolio = () => {
   const [theme, setTheme] = useState("dark");
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const canvasRef = useRef(null);
+
 
   // Project data
   const projects = [
@@ -231,11 +235,15 @@ const Portfolio = () => {
   };
 
   return (
+    <>
+   
     <div
       className={`min-h-screen ${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
       } transition-colors duration-500 overflow-hidden`}
     >
+       
+ 
       {/* Animated background */}
       {theme === "dark" && (
         <canvas
@@ -267,7 +275,10 @@ const Portfolio = () => {
             transition={{ duration: 0.5 }}
             className="font-bold text-xl"
           >
+            <div className="flex justify-center items-center gap-2">
+            <img className="w-14 h-14 border border-blue-500 rounded-full" src={image} alt="" />
             <span className="text-blue-500">Abdikarim</span>
+            </div>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -534,6 +545,28 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
+      <Toaster
+  position="top-right"
+  toastOptions={{
+    success: {
+      style: {
+        background: 'linear-gradient(to right, #ec4899, #8b5cf6, #3b82f6)',
+        color: '#fff',
+        borderRadius: '12px',
+        fontWeight: '600',
+      },
+    },
+    error: {
+      style: {
+        background: '#ef4444',
+        color: '#fff',
+        borderRadius: '12px',
+        padding: '12px 16px',
+        fontWeight: '600',
+      },
+    },
+  }}
+/>,
 
       {/* Skills Section */}
       <section
@@ -715,6 +748,8 @@ const Portfolio = () => {
         </p>
       </footer>
     </div>
+    
+    </>
   );
 };
 
@@ -838,6 +873,30 @@ const InteractiveBlobs = () => {
 };
 
 const ContactSection = ({ theme }) => {
+  const form = useRef();
+
+const sendEmail = (e) => {
+  e.preventDefault();
+
+  emailjs
+    .sendForm(
+      'service_xgiqm6j',    // replace with your EmailJS service ID
+      'template_3ooghfz',   // replace with your EmailJS template ID
+      form.current,
+      'kr4s2Oa78VlQNVqCR'     // replace with your EmailJS public key
+    )
+    .then(
+  () => {
+    toast.success('Message sent successfully! ✅');
+    form.current.reset();
+  },
+  (error) => {
+    toast.error('Failed to send message ❌');
+    console.error(error.text);
+  }
+);
+};
+
   return (
     <section
       id="contact"
@@ -873,7 +932,7 @@ const ContactSection = ({ theme }) => {
           viewport={{ once: true }}
           className={`rounded-3xl p-10 shadow-2xl backdrop-blur-xl border border-white/20 bg-white/70 dark:bg-gray-900/70`}
         >
-          <form className="space-y-8">
+          <form ref={form} onSubmit={sendEmail} className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <label
@@ -885,8 +944,10 @@ const ContactSection = ({ theme }) => {
                 <input
                   type="text"
                   id="name"
+                  name="from_name"
                   className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition"
                   placeholder="Enter your name"
+                  required
                 />
               </div>
               <div>
@@ -896,11 +957,13 @@ const ContactSection = ({ theme }) => {
                 >
                   Email Address
                 </label>
-                <input
+                   <input
                   type="email"
                   id="email"
+                  name="from_email"
                   className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition"
                   placeholder="Enter your email"
+                  required
                 />
               </div>
             </div>
@@ -912,11 +975,13 @@ const ContactSection = ({ theme }) => {
               >
                 Subject
               </label>
-              <input
+                <input
                 type="text"
                 id="subject"
+                name="subject"
                 className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition"
                 placeholder="What is this regarding?"
+                required
               />
             </div>
 
@@ -929,13 +994,15 @@ const ContactSection = ({ theme }) => {
               </label>
               <textarea
                 id="message"
+                name="message"
                 rows={6}
                 className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition resize-none"
                 placeholder="Tell me about your project..."
+                required
               />
             </div>
 
-            <button
+           <button
               type="submit"
               className="w-full py-4 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-600 hover:from-blue-600 hover:via-purple-600 hover:to-pink-500 text-white font-extrabold rounded-xl shadow-lg transition-transform transform hover:scale-105"
             >
@@ -1009,419 +1076,7 @@ const ContactSection = ({ theme }) => {
     </section>
   );
 };
-;
-//ANOTHER BACKUP
-// const AnimatedBackground = () => (
-//   <div
-//     aria-hidden="true"
-//     className="absolute inset-0 -z-10 overflow-hidden"
-//   >
-//     {/* Animated gradient */}
-//     <div
-//       className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 bg-[length:400%_400%] animate-gradient-xy"
-//       style={{ filter: "blur(80px)" }}
-//     />
-//     {/* Abstract SVG pattern */}
-//     <svg
-//       className="absolute inset-0 w-full h-full opacity-20"
-//       xmlns="http://www.w3.org/2000/svg"
-//       preserveAspectRatio="xMidYMid slice"
-//       viewBox="0 0 800 600"
-//       fill="none"
-//     >
-//       <circle cx="200" cy="150" r="150" fill="url(#grad1)" />
-//       <circle cx="600" cy="450" r="200" fill="url(#grad2)" />
-//       <defs>
-//         <radialGradient id="grad1" cx="0.5" cy="0.5" r="0.5">
-//           <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.7" />
-//           <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
-//         </radialGradient>
-//         <radialGradient id="grad2" cx="0.5" cy="0.5" r="0.5">
-//           <stop offset="0%" stopColor="#ec4899" stopOpacity="0.6" />
-//           <stop offset="100%" stopColor="#f43f5e" stopOpacity="0" />
-//         </radialGradient>
-//       </defs>
-//     </svg>
-//   </div>
-// );
+ 
 
-// const ContactSection = ({ theme }) => {
-//   return (
-//     <section
-//       id="contact"
-//       className="relative py-24 px-6 overflow-hidden"
-//       style={{ minHeight: "100vh" }}
-//     >
-//       <AnimatedBackground />
-
-//       <div className="max-w-4xl mx-auto relative z-10">
-//         <motion.h2
-//           initial={{ opacity: 0, y: 30 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.9 }}
-//           viewport={{ once: true }}
-//           className="text-4xl md:text-5xl font-extrabold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-600 to-pink-500"
-//         >
-//           Get In <span className="text-blue-500">Touch</span>
-//         </motion.h2>
-
-//         <motion.p
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.9, delay: 0.15 }}
-//           viewport={{ once: true }}
-//           className="text-center text-lg md:text-xl max-w-3xl mx-auto mb-16 text-gray-500 dark:text-gray-100"
-//         >
-//           Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!
-//         </motion.p>
-
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.9, delay: 0.3 }}
-//           viewport={{ once: true }}
-//           className={`rounded-3xl p-10 shadow-2xl backdrop-blur-xl border border-white/20 ${
-//             theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
-//           }`}
-//         >
-//           <form className="space-y-8">
-//             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-//               <div>
-//                 <label
-//                   htmlFor="name"
-//                   className="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-200"
-//                 >
-//                   Your Name
-//                 </label>
-//                 <input
-//                   type="text"
-//                   id="name"
-//                   className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition"
-//                   placeholder="Enter your name"
-//                 />
-//               </div>
-//               <div>
-//                 <label
-//                   htmlFor="email"
-//                   className="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-200"
-//                 >
-//                   Email Address
-//                 </label>
-//                 <input
-//                   type="email"
-//                   id="email"
-//                   className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition"
-//                   placeholder="Enter your email"
-//                 />
-//               </div>
-//             </div>
-
-//             <div>
-//               <label
-//                 htmlFor="subject"
-//                 className="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-200"
-//               >
-//                 Subject
-//               </label>
-//               <input
-//                 type="text"
-//                 id="subject"
-//                 className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition"
-//                 placeholder="What is this regarding?"
-//               />
-//             </div>
-
-//             <div>
-//               <label
-//                 htmlFor="message"
-//                 className="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-200"
-//               >
-//                 Your Message
-//               </label>
-//               <textarea
-//                 id="message"
-//                 rows={6}
-//                 className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-pink-400 transition resize-none"
-//                 placeholder="Tell me about your project..."
-//               />
-//             </div>
-
-//             <button
-//               type="submit"
-//               className="w-full py-4 bg-gradient-to-r from-pink-500 via-purple-600 to-blue-600 hover:from-blue-600 hover:via-purple-600 hover:to-pink-500 text-white font-extrabold rounded-xl shadow-lg transition-transform transform hover:scale-105"
-//             >
-//               Send Message
-//             </button>
-//           </form>
-//         </motion.div>
-
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.9, delay: 0.45 }}
-//           viewport={{ once: true }}
-//           className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16"
-//         >
-//           {/* Email */}
-//           <div
-//             className={`p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl ${
-//               theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
-//             } flex flex-col items-center space-y-4`}
-//           >
-//             <EnvelopeSimple size={48} className="text-pink-500" />
-//             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Email</h3>
-//             <a
-//               href="mailto:abdikarim.dev01@gmail.com"
-//               className="text-pink-600 hover:text-pink-800 font-semibold transition"
-//             >
-//               abdikarim.dev01@gmail.com
-//             </a>
-//           </div>
-
-//           {/* Location */}
-//           <div
-//             className={`p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl ${
-//               theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
-//             } flex flex-col items-center space-y-4`}
-//           >
-//             <MapPin size={48} className="text-purple-600" />
-//             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Location</h3>
-//             <p className="text-gray-700 dark:text-gray-300 font-medium">Mogadishu, Banaadir, Somalia</p>
-//           </div>
-
-//           {/* Social */}
-//           <div
-//             className={`p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl ${
-//               theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
-//             } flex flex-col items-center space-y-6`}
-//           >
-//             <GlobeHemisphereEast size={48} className="text-cyan-600" />
-//             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Social</h3>
-//             <div className="flex justify-center space-x-8 text-pink-600 dark:text-pink-400">
-//               <a
-//                 href="https://www.linkedin.com/in/abdikarim-dev-b6a94b388/"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//                 aria-label="LinkedIn"
-//                 className="hover:text-pink-800 transition"
-//               >
-//                 <LinkedinLogo size={32} />
-//               </a>
-//               <a
-//                 href="https://github.com/cabdikariim242/"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//                 aria-label="GitHub"
-//                 className="hover:text-gray-900 dark:hover:text-white transition"
-//               >
-//                 <GithubLogo size={32} />
-//               </a>
-//               <a
-//                 href="https://x.com/AbdikarimD31284"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//                 aria-label="Twitter"
-//                 className="hover:text-pink-500 transition"
-//               >
-//                 <TwitterLogo size={32} />
-//               </a>
-//             </div>
-//           </div>
-//         </motion.div>
-//       </div>
-
-//       <style jsx>{`
-//         @keyframes gradient-xy {
-//           0% {
-//             background-position: 0% 50%;
-//           }
-//           50% {
-//             background-position: 100% 50%;
-//           }
-//           100% {
-//             background-position: 0% 50%;
-//           }
-//         }
-//         .animate-gradient-xy {
-//           animation: gradient-xy 15s ease infinite;
-//         }
-//       `}</style>
-//     </section>
-//   );
-// };
-
-//BACK UP PLAN
-// const ContactSection = ({ theme }) => {
-//   return (
-//     <section
-//       id="contact"
-//       className="py-24 px-6 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800"
-//     >
-//       <div className="max-w-4xl mx-auto">
-//         <motion.h2
-//           initial={{ opacity: 0, y: 30 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.9 }}
-//           viewport={{ once: true }}
-//           className="text-4xl md:text-5xl font-extrabold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"
-//         >
-//           Get In <span className="text-blue-500">Touch</span>
-//         </motion.h2>
-
-//         <motion.p
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.9, delay: 0.15 }}
-//           viewport={{ once: true }}
-//           className="text-center text-lg md:text-xl max-w-3xl mx-auto mb-16 text-gray-700 dark:text-gray-300"
-//         >
-//           Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!
-//         </motion.p>
-
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.9, delay: 0.3 }}
-//           viewport={{ once: true }}
-//           className={`rounded-3xl p-10 shadow-2xl backdrop-blur-xl border border-white/20 ${
-//             theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
-//           }`}
-//         >
-//           <form className="space-y-8">
-//             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-//               <div>
-//                 <label htmlFor="name" className="block text-sm font-semibold mb-2 text-gray-800 dark:text-gray-200">
-//                   Your Name
-//                 </label>
-//                 <input
-//                   type="text"
-//                   id="name"
-//                   className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-400 transition"
-//                   placeholder="Enter your name"
-//                 />
-//               </div>
-//               <div>
-//                 <label htmlFor="email" className="block text-sm font-semibold mb-2 text-gray-800 dark:text-gray-200">
-//                   Email Address
-//                 </label>
-//                 <input
-//                   type="email"
-//                   id="email"
-//                   className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-400 transition"
-//                   placeholder="Enter your email"
-//                 />
-//               </div>
-//             </div>
-
-//             <div>
-//               <label htmlFor="subject" className="block text-sm font-semibold mb-2 text-gray-800 dark:text-gray-200">
-//                 Subject
-//               </label>
-//               <input
-//                 type="text"
-//                 id="subject"
-//                 className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-400 transition"
-//                 placeholder="What is this regarding?"
-//               />
-//             </div>
-
-//             <div>
-//               <label htmlFor="message" className="block text-sm font-semibold mb-2 text-gray-800 dark:text-gray-200">
-//                 Your Message
-//               </label>
-//               <textarea
-//                 id="message"
-//                 rows={6}
-//                 className="w-full px-5 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-400 transition resize-none"
-//                 placeholder="Tell me about your project..."
-//               />
-//             </div>
-
-//             <button
-//               type="submit"
-//               className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white font-extrabold rounded-xl shadow-lg transition-transform transform hover:scale-105"
-//             >
-//               Send Message
-//             </button>
-//           </form>
-//         </motion.div>
-
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.9, delay: 0.45 }}
-//           viewport={{ once: true }}
-//           className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16"
-//         >
-//           {/* Email */}
-//           <div
-//             className={`p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl ${
-//               theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
-//             } flex flex-col items-center space-y-4`}
-//           >
-//             <EnvelopeSimple size={48} className="text-blue-600" />
-//             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Email</h3>
-//             <a
-//               href="mailto:abdikarim.dev01@gmail.com"
-//               className="text-blue-600 hover:text-blue-800 font-semibold transition"
-//             >
-//               abdikarim.dev01@gmail.com
-//             </a>
-//           </div>
-
-//           {/* Location */}
-//           <div
-//             className={`p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl ${
-//               theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
-//             } flex flex-col items-center space-y-4`}
-//           >
-//             <MapPin size={48} className="text-purple-600" />
-//             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Location</h3>
-//             <p className="text-gray-700 dark:text-gray-300 font-medium">Mogadishu, Banaadir, Somalia</p>
-//           </div>
-
-//           {/* Social */}
-//           <div
-//             className={`p-8 rounded-2xl text-center shadow-xl border border-white/20 backdrop-blur-xl ${
-//               theme === "dark" ? "bg-gray-900/70" : "bg-white/70"
-//             } flex flex-col items-center space-y-6`}
-//           >
-//             <GlobeHemisphereEast size={48} className="text-cyan-600" />
-//             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Social</h3>
-//             <div className="flex justify-center space-x-8 text-blue-600 dark:text-blue-400">
-//               <a
-//                 href="https://www.linkedin.com/in/abdikarim-dev-b6a94b388/"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//                 aria-label="LinkedIn"
-//                 className="hover:text-blue-800 transition"
-//               >
-//                 <LinkedinLogo size={32} />
-//               </a>
-//               <a
-//                 href="https://github.com/cabdikariim242/"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//                 aria-label="GitHub"
-//                 className="hover:text-gray-900 dark:hover:text-white transition"
-//               >
-//                 <GithubLogo size={32} />
-//               </a>
-//               <a
-//                 href="https://x.com/AbdikarimD31284"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//                 aria-label="Twitter"
-//                 className="hover:text-blue-500 transition"
-//               >
-//                 <TwitterLogo size={32} />
-//               </a>
-//             </div>
-//           </div>
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// };
 
 export default Portfolio;
