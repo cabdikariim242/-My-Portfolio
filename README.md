@@ -1,1 +1,1 @@
-live preview(https://my-portfolio-ten-henna-48.vercel.app/)
+live preview(https://abdikariim.vercel.app/)
